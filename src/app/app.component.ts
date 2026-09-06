@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,11 @@ export class AppComponent implements OnInit {
   isDarkTheme = true;
   navOpen = false;
   contactMessage = '';
+  messageType: 'success' | 'error' = 'success';
   isSubmitting = false;
+  @ViewChild('contactForm') contactForm!: NgForm;
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.loadTheme();
@@ -37,31 +43,43 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isSubmitting = true;
-    const formData = {
-      name: (document.querySelector('input[name="name"]') as HTMLInputElement)?.value,
-      email: (document.querySelector('input[name="email"]') as HTMLInputElement)?.value,
-      message: (document.querySelector('textarea[name="message"]') as HTMLTextAreaElement)?.value
-    };
-
-    if (!formData.name || !formData.email || !formData.message) {
-      alert('Please fill all fields');
-      this.isSubmitting = false;
+    if (!this.contactForm.valid) {
+      this.contactMessage = 'Please fill all fields correctly';
+      this.messageType = 'error';
       return;
     }
 
-    // Simulate form submission
-    setTimeout(() => {
-      this.contactMessage = 'Thank you! Your message has been sent successfully.';
-      this.isSubmitting = false;
-      
-      // Reset form
-      (document.querySelector('.contact-form') as HTMLFormElement)?.reset();
-      
-      // Clear message after 3 seconds
-      setTimeout(() => {
-        this.contactMessage = '';
-      }, 3000);
-    }, 1000);
+    this.isSubmitting = true;
+    const formData = {
+      name: this.contactForm.value.name,
+      email: this.contactForm.value.email,
+      message: this.contactForm.value.message
+    };
+
+    // Send to backend
+    this.http.post('/api/contact/send', formData).subscribe(
+      (response: any) => {
+        this.contactMessage = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
+        this.messageType = 'success';
+        this.isSubmitting = false;
+        this.contactForm.resetForm();
+        
+        // Clear message after 5 seconds
+        setTimeout(() => {
+          this.contactMessage = '';
+        }, 5000);
+      },
+      (error) => {
+        console.error('Error sending message:', error);
+        this.contactMessage = 'Error sending message. Please try again or contact me directly at kanishsnh@gmail.com';
+        this.messageType = 'error';
+        this.isSubmitting = false;
+        
+        // Clear message after 5 seconds
+        setTimeout(() => {
+          this.contactMessage = '';
+        }, 5000);
+      }
+    );
   }
 }
