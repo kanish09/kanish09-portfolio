@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule, NgForm } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +15,10 @@ export class AppComponent implements OnInit {
   isSubmitting = false;
   @ViewChild('contactForm') contactForm!: NgForm;
 
-  constructor(private http: HttpClient) {}
-
   ngOnInit() {
     this.loadTheme();
+    // Initialize EmailJS
+    emailjs.init('5NhRmTa1sZI3xS0vR'); // Public Key
   }
 
   toggleTheme() {
@@ -50,15 +50,17 @@ export class AppComponent implements OnInit {
     }
 
     this.isSubmitting = true;
-    const formData = {
-      name: this.contactForm.value.name,
-      email: this.contactForm.value.email,
+    
+    const templateParams = {
+      to_email: 'kanishsnh@gmail.com',
+      from_email: this.contactForm.value.email,
+      from_name: this.contactForm.value.name,
       message: this.contactForm.value.message
     };
 
-    // Send to backend
-    this.http.post('/api/contact/send', formData).subscribe(
-      (response: any) => {
+    emailjs.send('service_portfolio', 'template_portfolio', templateParams)
+      .then((response) => {
+        console.log('Email sent successfully:', response);
         this.contactMessage = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
         this.messageType = 'success';
         this.isSubmitting = false;
@@ -68,9 +70,9 @@ export class AppComponent implements OnInit {
         setTimeout(() => {
           this.contactMessage = '';
         }, 5000);
-      },
-      (error) => {
-        console.error('Error sending message:', error);
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
         this.contactMessage = 'Error sending message. Please try again or contact me directly at kanishsnh@gmail.com';
         this.messageType = 'error';
         this.isSubmitting = false;
@@ -79,7 +81,6 @@ export class AppComponent implements OnInit {
         setTimeout(() => {
           this.contactMessage = '';
         }, 5000);
-      }
-    );
+      });
   }
 }
