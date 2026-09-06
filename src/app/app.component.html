@@ -1,0 +1,309 @@
+<div class="app-container">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <div class="logo">
+        <a href="#home">KS</a>
+      </div>
+      <ul class="nav-links" [class.active]="navOpen">
+        <li><a href="#home" (click)="closeNav()">Home</a></li>
+        <li><a href="#about" (click)="closeNav()">About</a></li>
+        <li><a href="#projects" (click)="closeNav()">Projects</a></li>
+        <li><a href="#skills" (click)="closeNav()">Skills</a></li>
+        <li><a href="#experience" (click)="closeNav()">Experience</a></li>
+        <li><a href="#contact" (click)="closeNav()">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" (click)="toggleTheme()" [title]="isDarkTheme ? 'Light Mode' : 'Dark Mode'">
+          <span>{{ isDarkTheme ? '☀️' : '🌙' }}</span>
+        </button>
+        <button class="hamburger" [class.active]="navOpen" (click)="toggleNav()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Kanish Singha</h1>
+          <p class="title">Full-Stack Software Engineer</p>
+          <p class="subtitle">Building scalable web applications with MEAN Stack, Java/Spring Boot, and AI-powered solutions</p>
+          <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/kanishsingha09/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/kanish09" target="_blank" rel="noopener">GitHub</a>
+            <a href="mailto:kanishsnh@gmail.com">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>Software Engineer with 4+ years of experience building full-stack web applications, REST APIs, and AI-powered automation pipelines. Skilled at translating business requirements into scalable solutions across the MEAN stack, Java/Spring Boot, and OpenAI-integrated systems.</p>
+            <p>I specialize in:</p>
+            <ul>
+              <li>Full-stack development with MEAN and Java/Spring Boot</li>
+              <li>REST API design and implementation</li>
+              <li>AI/ML integration with OpenAI APIs</li>
+              <li>Web scraping and data extraction</li>
+              <li>Cloud deployment and DevOps</li>
+            </ul>
+          </div>
+          <div class="about-stats">
+            <div class="stat">
+              <h3>4+</h3>
+              <p>Years Experience</p>
+            </div>
+            <div class="stat">
+              <h3>10+</h3>
+              <p>Projects Completed</p>
+            </div>
+            <div class="stat">
+              <h3>99.9%</h3>
+              <p>Uptime Record</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <h3>Khelcircle.com</h3>
+              <div class="project-links">
+                <a href="https://www.khelcircle.com/" target="_blank">Live</a>
+                <a href="https://github.com/kanish09" target="_blank">Code</a>
+              </div>
+            </div>
+            <p class="description">Esports-focused platform delivering gaming news, updates, and tournament coverage with fantasy esports features and real-time performance tracking.</p>
+            <div class="tech-stack">
+              <span class="tech">Angular</span>
+              <span class="tech">Node.js</span>
+              <span class="tech">MongoDB</span>
+            </div>
+            <p class="revenue"><strong>Revenue Model:</strong> Ads & Subscription</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3>HOHC - Healthcare Platform</h3>
+              <div class="project-links">
+                <a href="https://github.com/kanish09/HelPO-frontend" target="_blank">Code</a>
+              </div>
+            </div>
+            <p class="description">Healthcare consultancy web application with Angular frontend and Node.js/Express backend for managing medical services and patient interactions.</p>
+            <div class="tech-stack">
+              <span class="tech">Angular</span>
+              <span class="tech">Express</span>
+              <span class="tech">MongoDB</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3>BGV Automation Pipeline</h3>
+              <div class="project-links">
+                <a href="#contact">Inquire</a>
+              </div>
+            </div>
+            <p class="description">Automated end-to-end background verification extraction pipeline with OpenAI integration, processing 1000+ records daily with 60% time reduction.</p>
+            <div class="tech-stack">
+              <span class="tech">OpenAI</span>
+              <span class="tech">OCR</span>
+              <span class="tech">Python</span>
+              <span class="tech">Node.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Backend</h3>
+            <ul>
+              <li>Node.js & Express</li>
+              <li>Java & Spring Boot</li>
+              <li>REST API Design</li>
+              <li>Microservices</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Frontend</h3>
+            <ul>
+              <li>Angular</li>
+              <li>HTML/CSS/JavaScript</li>
+              <li>Responsive Design</li>
+              <li>Bootstrap</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Databases</h3>
+            <ul>
+              <li>MongoDB</li>
+              <li>SQL (MySQL, PostgreSQL)</li>
+              <li>Firebase</li>
+              <li>Database Design</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Tools & Technologies</h3>
+            <ul>
+              <li>Git & GitHub</li>
+              <li>Docker</li>
+              <li>Cloud Deployment</li>
+              <li>OpenAI Integration</li>
+              <li>Selenium & Web Scraping</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Specializations</h3>
+            <ul>
+              <li>AI/ML Integration</li>
+              <li>Web Scraping</li>
+              <li>OCR & Data Extraction</li>
+              <li>System Architecture</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Languages</h3>
+            <ul>
+              <li>English</li>
+              <li>Hindi</li>
+              <li>Bengali</li>
+              <li>Manipuri</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+      <div class="container">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2024 - Present</div>
+            <div class="timeline-content">
+              <h3>Senior Software Engineer</h3>
+              <p class="company">AIQoD</p>
+              <ul>
+                <li>REST API Design & Implementation</li>
+                <li>Automated end-to-end Background Verification extraction pipeline reducing manual processing by 60%</li>
+                <li>Integrated OpenAI APIs processing 1,000+ records daily</li>
+                <li>Orchestrated online pitch analyzer with scoring system</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2022 - 2024</div>
+            <div class="timeline-content">
+              <h3>Junior Software Engineer</h3>
+              <p class="company">AIQoD</p>
+              <ul>
+                <li>OpenAI Integration & Implementation</li>
+                <li>Built web scraping solutions with Selenium processing 10,000+ records daily</li>
+                <li>Streamlined data collection and dynamic content handling</li>
+                <li>OCR & data extraction from unstructured documents</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2021 - 2022</div>
+            <div class="timeline-content">
+              <h3>Software Developer Trainee</h3>
+              <p class="company">Rudra Innovative</p>
+              <ul>
+                <li>Designed and implemented secure API services with authentication/authorization</li>
+                <li>Supported 500+ users with enhanced system security</li>
+                <li>Improved uptime to 99.9% with best practices implementation</li>
+                <li>Reduced system failures by 40%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <div class="contact-item">
+              <strong>Email:</strong>
+              <a href="mailto:kanishsnh@gmail.com">kanishsnh@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <strong>Phone:</strong>
+              <a href="tel:+918794642279">+91 8794642279</a>
+            </div>
+            <div class="contact-item">
+              <strong>Location:</strong>
+              <p>Agartala, Tripura, India</p>
+            </div>
+            <div class="contact-item">
+              <strong>LinkedIn:</strong>
+              <a href="https://www.linkedin.com/in/kanishsingha09/" target="_blank">linkedin.com/in/kanishsingha09</a>
+            </div>
+          </div>
+
+          <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required name="name" ngModel>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required name="email" ngModel>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Your Message" rows="5" required name="message" ngModel></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Kanish Singha. All rights reserved.</p>
+      <p>Built with Angular, Node.js & MongoDB</p>
+    </div>
+  </footer>
+</div>
