@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.loadTheme();
     // Initialize EmailJS
-    emailjs.init('5NhRmTa1sZI3xS0vR'); // Public Key
+    emailjs.init('NZJOXgR0mcZLNzXWi'); // Public Key
   }
 
   toggleTheme() {
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
       message: this.contactForm.value.message
     };
 
-    emailjs.send('service_portfolio', 'template_portfolio', templateParams)
+    emailjs.send('service_95r61mm', 'template_vdgohws', templateParams)
       .then((response) => {
         console.log('Email sent successfully:', response);
         this.contactMessage = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
